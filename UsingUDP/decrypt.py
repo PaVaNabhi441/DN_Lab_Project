@@ -2,7 +2,7 @@ from Crypto.Cipher import AES
 import base64
 
 # 1. PASTE YOUR CAPTURED DATA HERE (Base64 or Hex)
-wireshark_data = "dfo+Hu95mZalgruPZjN5Y3Z2nK6sXKJdv70LLXw1tG4dpfWAnZ7tttCIAGQkenk5"  # Base64 example
+wireshark_data = input("Enter the data captured in WireShark: ")  # Base64 example
 # wireshark_data = "cfdc27ce7e94da76..."  # Hex example
 
 # 2. Load the SAME key used by sender.py

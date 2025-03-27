@@ -3,13 +3,16 @@ from Crypto.Random import get_random_bytes
 import socket
 import base64
 
-# Load the key (must match receiver's key)
+# Generate or load key
 try:
     with open('secret.key', 'rb') as f:
         key = f.read()
 except FileNotFoundError:
-    print("❌ Error: 'secret.key' not found. Copy it from the receiver.")
-    exit()
+    key = get_random_bytes(32)
+    with open('secret.key', 'wb') as f:
+        f.write(key)
+
+print(f"🔑 Encryption Key: {key.hex()}")  # Debug output
 
 def encrypt_message(message: str) -> str:
     cipher = AES.new(key, AES.MODE_EAX)
@@ -17,7 +20,7 @@ def encrypt_message(message: str) -> str:
     return base64.b64encode(cipher.nonce + tag + ciphertext).decode('utf-8')
 
 def send_message():
-    RECEIVER_IP = '192.168.234.96'  # CHANGE TO RECEIVER'S IP
+    RECEIVER_IP = '127.0.0.1'  # CHANGE TO RECEIVER'S IP
     PORT = 55555
     while True:
         message = input("Enter message (or 'quit' to exit): ")
