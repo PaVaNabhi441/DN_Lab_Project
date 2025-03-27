@@ -15,7 +15,7 @@ def connect_to_receiver():
     dh_key = generate_dh_key()
     
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.connect(('127.0.0.1', 55555))  # ← REPLACE WITH RECEIVER'S IP
+        s.connect(('172.20.218.154', 55555))  # ← REPLACE WITH RECEIVER'S IP
         
         # Exchange DH keys
         s.send(dh_key.public_key().export_key(format='DER'))

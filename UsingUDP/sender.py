@@ -20,7 +20,7 @@ def encrypt_message(message: str) -> str:
     return base64.b64encode(cipher.nonce + tag + ciphertext).decode('utf-8')
 
 def send_message():
-    RECEIVER_IP = '127.0.0.1'  # CHANGE TO RECEIVER'S IP
+    RECEIVER_IP = '172.20.218.154'  # CHANGE TO RECEIVER'S IP
     PORT = 55555
     while True:
         message = input("Enter message (or 'quit' to exit): ")
